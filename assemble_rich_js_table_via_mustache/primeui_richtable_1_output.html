@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<!-- https://www.primefaces.org/primeui/#datatable -->
+<head><title>example of prime UI table</title>
+                <link rel="stylesheet" href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+                <link rel="stylesheet" href=https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+                <link rel="stylesheet" href=https://cdnjs.cloudflare.com/ajax/libs/primeui/4.1.15/primeui.min.css integrity="sha512-S3lHt1bxoMtQRePCAPZp39xhgwqhBIEAaSsBa+vq76wsUItee9ooBJTNo7BDViz+727FbxG6O3kkeKhxcK1RuA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+                <!--link rel="stylesheet" href="/primeui-4.1.15/themes/pepper-grinder/theme.css"/--> 
+                <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+                <script src=https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+                <script src=https://cdnjs.cloudflare.com/ajax/libs/primeui/4.1.15/primeui.min.js integrity="sha512-p5EjY0keMShYvUjsdzlpwiQEk5vUwodnlIhsSk3Y22/Y9RSpH+3abpOzxWq1s4PuNPGdqtcp4uC7EuR2BfwG3A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<style></style>
+</head>
+<body>
+<div id="table_div_0"></div>
+<p id="overlaytext_div_1"><small><u>info</u></small></p>
+<div id="overlay_div_1"><p>filters are prefix-based<br></p></div>
+<script>
+var tbl_local_rep_hardcoded = [
+
+					{              'region'			: 'HKG',
+									'rtype'			:    'rice',
+									'summary'		: 'link<br>USD',		// non-escaped
+									'blx'				: 1,
+									'baseline_uri'		: 'https://www.worldatlas.com/'
+					},
+					{              'region'			: 'LDN',
+									'rtype'			:    'wheat',
+									'summary'		: 'link N/A',		// non-escaped
+									'blx'				: 0,
+									'baseline_uri'		: 'https://www.worldatlas.com/'
+					},
+					{              'region'			: 'SYD',
+									'rtype'			:    'cotton',
+									'summary'		: 'link AUD',		// non-escaped
+									'blx'				: 1,
+									'baseline_uri'		: 'https://www.worldatlas.com/'
+					},
+			
+			];
+$(function() {
+               $('#overlay_div_1').puioverlaypanel({ target:'#overlaytext_div_1' });
+               
+			   NA_uri = 'N/A';
+			   
+			   
+			   $('#table_div_0').puidatatable({
+                                columns: [
+								
+										{
+											field: 		'rtype',                                   
+											sortable: 	true,
+											filter: 		true,
+											
+											filterMatchMode: 'startsWith',
+											
+											headerText: 'report type'
+										},
+										{
+											field: 		'region',                                   
+											sortable: 	true,
+											filter: 		true,
+											
+											filterMatchMode: 'startsWith',
+											
+											headerText: 'region'
+										},
+										{
+											field: 		'summary',                                   
+											sortable: 	false,
+											filter: 		false,
+											
+											
+											headerText: 'summary'
+										},
+										{
+											field: 		'link',                                   
+											sortable: 	false,
+											filter: 		false,
+											
+											
+											content:		function(record){
+																if(record.blx==1) 
+																	return ['<a href=', '"', record.baseline_uri, '"', '>', record.rtype, '</a>'].join('');
+																else
+																	return NA_uri;
+															},
+											headerText: 'link'
+										},
+									
+										// the final comma won't be an issue
+								],
+                                //columnResizeMode: "fit",
+                                datasource: tbl_local_rep_hardcoded
+                });
+});
+</script>
+</body>
+</html>

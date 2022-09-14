@@ -1,0 +1,53 @@
+headers:
+
+ - field: rtype
+   headerText: report type
+   sortable: true
+   filter: true
+   filterMatchMode: startsWith
+   #  ... "startsWith" / "contains"
+   isLink: false
+ 
+ - field: region
+   headerText: region
+   sortable: true
+   filter: true
+   filterMatchMode: startsWith
+   isLink: false
+ 
+ - field: summary
+   headerText: summary
+   sortable: false
+   filter: false
+   filterMatchMode: startsWith
+   isLink: false
+ 
+ - field: link
+   headerText: link
+   sortable: false
+   filter: false
+   filterMatchMode: startsWith
+   isLink: true
+
+NA_uri: "N/A"
+
+records:
+
+ - region: HKG
+   rtype: rice
+   summary: "link<br>USD"
+   blx: 1
+   baseline_uri: "https://www.worldatlas.com/"
+
+ - region: LDN
+   rtype: wheat
+   summary: "link N/A"
+   blx: 0
+   baseline_uri: 'https://www.worldatlas.com/'
+
+ - region: SYD
+   rtype: cotton
+   summary: link AUD
+   blx: 1
+   baseline_uri: "https://www.worldatlas.com/"
+

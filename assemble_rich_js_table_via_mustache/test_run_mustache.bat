@@ -1,0 +1,1 @@
+mustache.exe primeui_richtable_1_data.yml primeui_richtable_1_html.mustache > primeui_richtable_1_output.html
