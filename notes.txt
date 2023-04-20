@@ -1,8 +1,0 @@
-https://jekyllrb.com/
-https://www.primefaces.org/primeui/#tree
-https://jqueryui.com/
-https://w2ui.com/web/demos/
-
-https://geekflare.com/best-javascript-ui-libraries/
-jqwidgets webix dhtmlx
-https://hackr.io/blog/javascript-ui-library
